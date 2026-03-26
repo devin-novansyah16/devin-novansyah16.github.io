@@ -525,7 +525,10 @@
                 flex-direction: column; /* Membuat Logo di atas dan Menu di bawah */
                 gap: 10px;
                 text-align: center;
-                position: static;
+                position: fixed; /* TETAP DIAM DI ATAS */
+                width: 100%;
+                background: rgba(0, 0, 0, 0.8); /* Gelapkan sedikit agar teks konten di bawah tidak tembus */
+                backdrop-filter: blur(15px);
             }
             
             .nav-links {
@@ -537,11 +540,15 @@
             }
 
             .nav-links a {
-                font-size: 0.8rem; /* Mengecilkan teks agar pas di layar HP */
+                font-size: 0.75rem; /* Mengecilkan teks agar pas di layar HP */
             }
 
             .logo {
                 font-size: 1.4rem;
+            }
+
+            .hero {
+                padding-top: 140px; 
             }
 
             .hero-content h1 {
