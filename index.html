@@ -521,50 +521,64 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 10px 15px;
-                flex-direction: column; /* Membuat Logo di atas dan Menu di bawah */
-                gap: 10px;
-                text-align: center;
-                position: fixed; /* TETAP DIAM DI ATAS */
-                width: 100%;
-                background: rgba(0, 0, 0, 0.8); /* Gelapkan sedikit agar teks konten di bawah tidak tembus */
-                backdrop-filter: blur(15px);
+                position: fixed !important; /* !important memaksa agar tetap fixed */
+                top: 0 !important;
+                left: 0;
+                width: 100% !important;
+                padding: 10px 0 !important;
+                flex-direction: column !important;
+                background: rgba(10, 10, 25, 0.95) !important; /* Warna lebih solid agar tidak tembus */
+                backdrop-filter: blur(10px);
+                z-index: 9999 !important; /* Paling depan */
             }
-            
+
             .nav-links {
-                display: flex;     /* Memunculkan menu kembali */
-                gap: 10px;         /* Jarak antar menu */
-                flex-wrap: wrap;   /* Agar menu turun ke bawah jika tidak muat */
-                justify-content: center;
-                padding-bottom: 10px;
+                display: flex !important;
+                gap: 12px !important;
+                justify-content: center !important;
+                margin-top: 5px;
+                padding-bottom: 5px;
             }
 
             .nav-links a {
-                font-size: 0.75rem; /* Mengecilkan teks agar pas di layar HP */
+                font-size: 0.75rem !important;
             }
 
             .logo {
-                font-size: 1.4rem;
+                font-size: 1.2rem !important;
             }
 
+            /* Beri jarak agar konten Hero tidak tertutup Navigasi */
             .hero {
-                padding-top: 140px; 
+                padding-top: 130px !important;
             }
 
             .hero-content h1 {
-                font-size: 2.2rem;
+                font-size: 2rem !important;
             }
 
             .hero-content .tagline {
-                font-size: 1.2rem;
+                font-size: 1.1rem !important;
+            }
+
+            /* Penyesuaian Card agar tidak terlalu lebar di HP */
+            .education-card, .experience-card {
+                flex-direction: column !important;
+                text-align: center !important;
+                padding: 20px !important;
+                gap: 15px !important;
+            }
+
+            .edu-logo, .exp-img {
+                margin: 0 auto !important;
             }
 
             .skills, .projects, .contact {
-                padding: 60px 20px;
+                padding: 50px 20px !important;
             }
 
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.8rem !important;
             }
         }
     </style>
