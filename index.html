@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - Nama Kamu</title>
+    <title>Portofolio - Devin Novansyah</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -521,11 +521,27 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 15px 20px;
+                padding: 10px 15px;
+                flex-direction: column; /* Membuat Logo di atas dan Menu di bawah */
+                gap: 10px;
+                text-align: center;
+                position: static;
+            }
+            
+            .nav-links {
+                display: flex;     /* Memunculkan menu kembali */
+                gap: 10px;         /* Jarak antar menu */
+                flex-wrap: wrap;   /* Agar menu turun ke bawah jika tidak muat */
+                justify-content: center;
+                padding-bottom: 10px;
             }
 
-            .nav-links {
-                display: none;
+            .nav-links a {
+                font-size: 0.8rem; /* Mengecilkan teks agar pas di layar HP */
+            }
+
+            .logo {
+                font-size: 1.4rem;
             }
 
             .hero-content h1 {
