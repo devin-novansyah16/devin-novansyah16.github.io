@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Nama Kamu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e94560;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h1 span {
+            color: #e94560;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-content p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            color: #ccc;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover::before {
+            transform: scale(1.2);
+        }
+
+        .social-links a.github {
+            background: linear-gradient(135deg, #333, #24292e);
+            border: 2px solid #444;
+        }
+
+        .social-links a.github:hover {
+            background: linear-gradient(135deg, #444, #333);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-links a.linkedin {
+            background: linear-gradient(135deg, #0077b5, #00a0dc);
+            border: 2px solid #0088cc;
+        }
+
+        .social-links a.linkedin:hover {
+            background: linear-gradient(135deg, #0088cc, #0077b5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.4);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 100px 50px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: #e94560;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #e94560;
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #e94560;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 50px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .project-info p {
+            color: #a0a0a0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-links a {
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #e94560;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #ff6b6b;
+        }
+
+        .btn-secondary {
+            border: 1px solid #e94560;
+            color: #e94560;
+        }
+
+        .btn-secondary:hover {
+            background: #e94560;
+            color: #fff;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 50px;
+            background: rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info p {
+            color: #a0a0a0;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-links a:hover {
+            background: #e94560;
+            border-color: #e94560;
+        }
+
+        /* Efek Hover untuk Tombol Download di Bagian Kontak */
+.cv-download-final a:hover {
+    background: #ff6b6b !important; /* Warna merah yang sedikit lebih terang */
+    transform: translateY(-5px); /* Sedikit terangkat */
+}
+
+/* Sedikit penyesuaian jarak untuk tombol kontak di HP */
+@media (max-width: 768px) {
+    .contact-links {
+        gap: 15px !important;
+    }
+    .cv-download-final {
+        margin-top: 30px !important;
+    }
+}
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+
+        /* Education Section */
+.education {
+    padding: 100px 50px;
+}
+
+.education-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.education-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    transition: transform 0.3s;
+}
+
+.education-card:hover {
+    transform: scale(1.02);
+    border-color: #e94560;
+}
+
+.edu-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.edu-info h3 {
+    font-size: 1.5rem;
+    color: #e94560;
+    margin-bottom: 5px;
+}
+
+.edu-info p {
+    color: #ccc;
+    margin: 2px 0;
+}
+
+.edu-info .year {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .education-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Experience Section */
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    border-color: #e94560 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+    .experience-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .experience-card img {
+        margin-bottom: 20px;
+    }
+}
+
+.experience {
+    padding: 100px 50px;
+    background: rgba(0, 0, 0, 0.1); /* Sedikit perbedaan warna background */
+}
+
+.experience-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antar kotak pengalaman */
+}
+
+.experience-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    border-color: #e94560;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Ganti .exp-logo sebelumnya dengan ini */
+.exp-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px; /* Sedikit lengkungan di sudut */
+    object-fit: contain; /* Memastikan logo tidak terpotong */
+}
+
+/* Sedikit penyesuaian agar responsif di HP */
+@media (max-width: 600px) {
+    .experience-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .exp-img {
+        margin-bottom: 20px; /* Jarak bawah jika di HP */
+    }
+}
+
+.exp-info h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.exp-info .organization {
+    color: #e94560;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.exp-info .desc {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.exp-info .year {
+    color: #a0a0a0;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .experience-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.2rem;
+            }
+
+            .skills, .projects, .contact {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Halo, Saya <span>Devin Novansyah</span></h1>
+            <p class="tagline">Data Scientist | Data Analysis | Machine Learning | Artificial Intelligence</p>
+            <p>
+                Saya adalah mahasiswa Teknik Informatika di Universitas Mercu Buana yang memiliki minat besar dalam teknologi dan inovasi. Perjalanan akademik saya telah memperkenalkan saya pada berbagai bidang di dunia IT, termasuk data science, data Analysis, machine learning, and artificial intelligence.
+            </p>
+            
+            <!-- SOCIAL LINKS - Ganti URL dengan milikmu -->
+            <div class="social-links">
+    <a href="https://github.com/devin-novansyah16" target="_blank" class="github" title="GitHub">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/devin-novansyah" target="_blank" class="linkedin" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div> 
+        </div>
+    </section>
+
+    <section class="education" id="education">
+    <h2 class="section-title">My <span>Education</span></h2>
+    <div class="education-container">
+        <div class="education-card">
+            <img src="Logo_Universitas_Mercu_Buana.jpg" alt="Logo UMB" class="edu-logo">
+            <div class="edu-info">
+                <h3>Teknik Informatika</h3>
+                <p>Universitas Mercu Buana</p>
+                <span class="year"><i class="far fa-calendar-alt"></i> September 2023 - Sekarang</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="experience" id="experience" style="padding: 100px 50px;">
+    <h2 class="section-title">My <span>Experience</span></h2>
+    <div class="experience-container" style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
+        
+        <div class="experience-card" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; display: flex; align-items: center; gap: 30px; transition: transform 0.3s, border-color 0.3s;">
+            <img src="logo_himti.jpg" alt="Logo HiMTI" style="width: 100px; height: 100px; border-radius: 15px; object-fit: contain;">
+
+            <div class="exp-info">
+                <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 5px;">Head of Internal Project Control Subdivision</h3>
+                <p style="color: #ccc; margin: 0; font-weight: 500;">PSDM Division</p>
+                <p style="color: #e94560; margin: 0 0 10px 0; font-weight: bold;">Himpunan Mahasiswa Teknik Informatika (HiMTI)</p>
+                
+                <p class="desc" style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">Bertanggung jawab dalam mengawasi jalannya proyek internal organisasi, memastikan manajemen waktu yang efektif, serta mengoordinasikan tim untuk mencapai target program kerja.</p>
+                
+                <span class="year" style="color: #a0a0a0; font-size: 0.9rem;"><i class="far fa-calendar-alt"></i> Oktober 2025 - Sekarang</span>
+            </div>
+        </div>
+
+        <div class="experience-card" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; display: flex; align-items: center; gap: 30px; transition: transform 0.3s, border-color 0.3s;">
+            <img src="idcamp.png" alt="Logo IDCamp" style="width: 100px; height: 100px; border-radius: 15px; object-fit: contain;">
+
+            <div class="exp-info">
+                <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 5px;">Intermediate Data Scientist Scholarship Awardee</h3>
+                <p style="color: #ccc; margin: 0 0 10px 0;">IDCamp Indosat Ooredoo Hutchison</p>
+                
+                <p class="desc" style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">Selected as a Scholarship Awardee in the IDCamp x Dicoding program and completed the Belajar Fundamental Analisis Data course at the Intermediate Data Scientist level.</p>
+                
+                <span class="year" style="color: #a0a0a0; font-size: 0.9rem;"><i class="far fa-calendar-alt"></i> Sep 2025 - Mar 2026</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">My <span>Skills</span></h2>
+        <div class="skills-grid">
+    <div class="skill-card">
+        <i class="fab fa-python"></i>
+        <h3>Python</h3>
+    </div>
+    
+    <div class="skill-card">
+        <i class="fas fa-table"></i>
+        <h3>Pandas & NumPy</h3>
+    </div>
+    
+    <div class="skill-card">
+        <i class="fas fa-brain"></i>
+        <h3>ML & AI</h3>
+    </div>
+    
+    <div class="skill-card">
+        <i class="fas fa-chart-bar"></i>
+        <h3>Tableau</h3>
+    </div>
+    
+    <div class="skill-card">
+        <i class="fas fa-database"></i>
+        <h3>SQL</h3>
+    </div>
+
+    <div class="skill-card">
+        <i class="fas fa-file-excel"></i>
+        <h3>Microsoft Excel</h3>
+    </div>
+</div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <div class="projects-grid">
+    <div class="project-card">
+        <div class="project-image">
+            <i class="fas fa-percentage"></i>
+        </div>
+        <div class="project-info">
+            <h3>Ecommerce Promotion Analysis</h3>
+            <p>Menganalisis efektivitas kampanye promosi pada platform e-commerce menggunakan Python untuk meningkatkan conversion rate.</p>
+            <div class="project-links">
+                <a href="https://github.com/devin-novansyah16/ecommerce-promotion-analysis" target="_blank" class="btn-primary">View Code</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-image">
+            <i class="fas fa-university"></i>
+        </div>
+        <div class="project-info">
+            <h3>Bank Transaction ML Analysis</h3>
+            <p>Implementasi Machine Learning untuk menganalisis pola transaksi perbankan dan deteksi anomali menggunakan Jupyter Notebook.</p>
+            <div class="project-links">
+                <a href="https://github.com/devin-novansyah16/bank-transaction-ml-analysis" target="_blank" class="btn-primary">View Code</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-image">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="project-info">
+            <h3>E-Commerce Dashboard</h3>
+            <p>Visualisasi data interaktif untuk memantau performa bisnis e-commerce secara real-time dan informatif.</p>
+            <div class="project-links">
+                <a href="https://github.com/devin-novansyah16/e-commerce-dashboard" target="_blank" class="btn-primary">View Code</a>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        <div class="contact-info">
+            <p>
+                Tertarik untuk berkolaborasi atau punya project menarik? 
+                Jangan ragu untuk menghubungi saya melalui platform berikut!
+            </p>
+<div class="contact-links" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 50px;">
+    <a href="mailto:email-kamu@gmail.com" class="btn-secondary" style="padding: 15px 30px; border: 1px solid #e94560; color: #e94560; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+        <i class="fas fa-envelope"></i> Email
+    </a>
+    <a href="https://github.com/devin-novansyah16" target="_blank" class="btn-secondary" style="padding: 15px 30px; border: 1px solid #e94560; color: #e94560; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+        <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="https://linkedin.com/in/devin-novansyah" target="_blank" class="btn-secondary" style="padding: 15px 30px; border: 1px solid #e94560; color: #e94560; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+        <i class="fab fa-linkedin-in"></i> LinkedIn
+    </a>
+</div>
+
+<div class="cv-download-final" style="text-align: center; margin-top: 50px;">
+    <a href="CV_Devin_Novansyah.pdf" download="CV_Devin_Novansyah" class="btn-primary" style="padding: 15px 40px; background: #e94560; color: #fff; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: bold; transition: background 0.3s ease, transform 0.3s ease; border: 2px solid transparent;">
+        <i class="fas fa-download"></i> Download Complete CV (PDF)
+    </a>
+</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Devin Novansyah. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
