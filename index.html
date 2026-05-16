@@ -623,24 +623,37 @@ footer .foot-right {
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:768px){
-  nav{ padding:0 20px; height:60px; }
-  .nav-links{ gap:16px; }
-  .nav-links a{ font-size:0.65rem; }
-  .logo{ font-size:0.85rem; }
-
-  .hero{ padding:100px 24px 60px; }
-  .hero h1{ font-size:2rem; }
-  .hero-deco{ display:none; }
-  .hero-sub{ font-size:0.72rem; }
-  .hero p{ font-size:0.9rem; }
-
-  .education,.experience,.skills,.projects,.contact{
-    padding:70px 24px;
+  /* NAVBAR - fix mobile */
+  nav {
+    padding: 10px 16px;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
-  .edu-card{ flex-direction:column; text-align:center; padding:24px; }
-  .exp-card{ flex-direction:column; padding:24px; gap:16px; }
-  .skill-card{ padding:20px 12px; }
-  footer{ flex-direction:column; gap:8px; padding:24px; text-align:center; }
+  .logo { font-size: 0.85rem; }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+  }
+  .nav-links a { font-size: 0.62rem; }
+
+  /* HERO */
+  .hero { padding: 130px 24px 60px; }
+  .hero h1 { font-size: 2rem; }
+  .hero-deco { display: none; }
+  .hero-sub { font-size: 0.72rem; }
+  .hero p { font-size: 0.9rem; }
+
+  /* SECTIONS */
+  .education, .experience, .skills, .projects, .contact {
+    padding: 70px 24px;
+  }
+  .edu-card { flex-direction: column; text-align: center; padding: 24px; }
+  .exp-card { flex-direction: column; padding: 24px; gap: 16px; }
+  .skill-card { padding: 20px 12px; }
+  footer { flex-direction: column; gap: 8px; padding: 24px; text-align: center; }
 }
 </style>
 </head>
