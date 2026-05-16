@@ -1,850 +1,905 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - Devin Novansyah</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            color: #fff;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, #e94560, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #e94560;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content h1 span {
-            color: #e94560;
-        }
-
-        .hero-content .tagline {
-            font-size: 1.5rem;
-            color: #a0a0a0;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-content p {
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            color: #ccc;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .social-links a {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-
-        .social-links a:hover::before {
-            transform: scale(1.2);
-        }
-
-        .social-links a.github {
-            background: linear-gradient(135deg, #333, #24292e);
-            border: 2px solid #444;
-        }
-
-        .social-links a.github:hover {
-            background: linear-gradient(135deg, #444, #333);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .social-links a.linkedin {
-            background: linear-gradient(135deg, #0077b5, #00a0dc);
-            border: 2px solid #0088cc;
-        }
-
-        .social-links a.linkedin:hover {
-            background: linear-gradient(135deg, #0088cc, #0077b5);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.4);
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 100px 50px;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-        }
-
-        .section-title span {
-            color: #e94560;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .skill-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #e94560;
-        }
-
-        .skill-card i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #e94560;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 100px 50px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #e94560, #ff6b6b);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-
-        .project-info {
-            padding: 25px;
-        }
-
-        .project-info h3 {
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-
-        .project-info p {
-            color: #a0a0a0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .project-links a {
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: #e94560;
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: #ff6b6b;
-        }
-
-        .btn-secondary {
-            border: 1px solid #e94560;
-            color: #e94560;
-        }
-
-        .btn-secondary:hover {
-            background: #e94560;
-            color: #fff;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 100px 50px;
-            background: rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        .contact-info {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info p {
-            color: #a0a0a0;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50px;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-links a:hover {
-            background: #e94560;
-            border-color: #e94560;
-        }
-
-        /* Efek Hover untuk Tombol Download di Bagian Kontak */
-.cv-download-final a:hover {
-    background: #ff6b6b !important; /* Warna merah yang sedikit lebih terang */
-    transform: translateY(-5px); /* Sedikit terangkat */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devin Novansyah — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --bg: #080c12;
+  --bg2: #0d1117;
+  --bg3: #111820;
+  --cyan: #00e5c8;
+  --cyan2: #00b8a0;
+  --cyan-dim: rgba(0,229,200,0.08);
+  --cyan-glow: rgba(0,229,200,0.18);
+  --gray: #8892a0;
+  --gray2: #4a5568;
+  --white: #e8edf5;
+  --white2: #c1cad6;
+  --border: rgba(0,229,200,0.15);
+  --border2: rgba(255,255,255,0.05);
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
 }
 
-/* Sedikit penyesuaian jarak untuk tombol kontak di HP */
-@media (max-width: 768px) {
-    .contact-links {
-        gap: 15px !important;
-    }
-    .cv-download-final {
-        margin-top: 30px !important;
-    }
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
 }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #666;
-        }
+/* ─── NOISE TEXTURE ─── */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:0;
+}
 
-        /* Education Section */
+/* ─── GRID LINES BG ─── */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(0,229,200,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,200,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events:none; z-index:0;
+}
+
+/* ─── NAV ─── */
+nav {
+  position:fixed; top:0; left:0; right:0;
+  z-index:999;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 60px;
+  height:70px;
+  background: rgba(8,12,18,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size:1rem;
+  color: var(--cyan);
+  letter-spacing:0.05em;
+}
+.logo span { color: var(--gray); }
+
+.nav-links {
+  display:flex; gap:36px; list-style:none;
+}
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size:0.72rem;
+  color: var(--gray);
+  text-decoration:none;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  transition: color 0.2s;
+  position:relative;
+}
+.nav-links a::after {
+  content:'';
+  position:absolute; bottom:-4px; left:0; right:0;
+  height:1px; background:var(--cyan);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform 0.3s;
+}
+.nav-links a:hover { color:var(--cyan); }
+.nav-links a:hover::after { transform:scaleX(1); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height:100vh;
+  display:flex; align-items:center;
+  padding:120px 60px 80px;
+  position:relative; z-index:1;
+}
+
+.hero-inner {
+  max-width:900px;
+}
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family: var(--font-mono);
+  font-size:0.72rem;
+  color:var(--cyan);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  border:1px solid var(--border);
+  padding:6px 14px;
+  border-radius:2px;
+  margin-bottom:32px;
+  background: var(--cyan-dim);
+}
+.hero-badge::before {
+  content:'';
+  width:6px; height:6px;
+  background:var(--cyan);
+  border-radius:50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:0.4; transform:scale(0.7); }
+}
+
+.hero h1 {
+  font-family: var(--font-mono);
+  font-size:clamp(2.4rem, 5vw, 4.2rem);
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:12px;
+}
+.hero h1 .name {
+  color:var(--cyan);
+  display:block;
+}
+
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size:0.85rem;
+  color:var(--gray);
+  letter-spacing:0.05em;
+  margin-bottom:28px;
+}
+.hero-sub .sep { color:var(--cyan); margin:0 8px; }
+
+.hero p {
+  max-width:600px;
+  color:var(--white2);
+  font-size:1rem;
+  font-weight:300;
+  line-height:1.8;
+  margin-bottom:48px;
+}
+
+.hero-actions {
+  display:flex; gap:16px; flex-wrap:wrap; align-items:center;
+}
+
+.btn-primary-hero {
+  font-family: var(--font-mono);
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:14px 32px;
+  background: var(--cyan);
+  color: var(--bg);
+  text-decoration:none;
+  font-weight:700;
+  transition:all 0.2s;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-primary-hero:hover {
+  background:#fff;
+  transform:translateY(-2px);
+}
+
+.social-pill {
+  display:flex; gap:0;
+  border:1px solid var(--border);
+  border-radius:2px;
+  overflow:hidden;
+}
+.social-pill a {
+  display:flex; align-items:center; justify-content:center;
+  width:48px; height:48px;
+  color:var(--gray);
+  text-decoration:none;
+  font-size:1.1rem;
+  transition:all 0.2s;
+  border-right:1px solid var(--border);
+}
+.social-pill a:last-child { border-right:none; }
+.social-pill a:hover { color:var(--cyan); background:var(--cyan-dim); }
+
+/* decorative corner */
+.hero-deco {
+  position:absolute; right:60px; top:50%;
+  transform:translateY(-50%);
+  width:240px; height:240px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0.4;
+}
+.hero-deco::before {
+  content:'';
+  position:absolute;
+  width:180px; height:180px;
+  border:1px solid var(--border);
+  border-radius:50%;
+}
+.hero-deco::after {
+  content:'';
+  position:absolute;
+  width:80px; height:80px;
+  background:var(--cyan-dim);
+  border:1px solid var(--cyan);
+  border-radius:50%;
+  animation: spin 20s linear infinite;
+}
+@keyframes spin {
+  from{transform:rotate(0deg) translateX(60px);}
+  to{transform:rotate(360deg) translateX(60px);}
+}
+
+/* ─── SECTIONS COMMON ─── */
+section { position:relative; z-index:1; }
+
+.sec-label {
+  font-family: var(--font-mono);
+  font-size:0.68rem;
+  color:var(--cyan);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.sec-title {
+  font-family: var(--font-mono);
+  font-size:clamp(1.6rem, 3vw, 2.4rem);
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:56px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--border);
+}
+.sec-title em { font-style:normal; color:var(--cyan); }
+
+/* ─── EDUCATION ─── */
 .education {
-    padding: 100px 50px;
+  padding:100px 60px;
+  background:var(--bg2);
 }
 
-.education-container {
-    max-width: 500px;
-    margin: 0 auto;
+.edu-card {
+  display:flex; gap:32px; align-items:center;
+  max-width:640px;
+  padding:36px;
+  border:1px solid var(--border);
+  background: var(--bg3);
+  transition:border-color 0.3s, transform 0.3s;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+.edu-card:hover {
+  border-color:var(--cyan);
+  transform:translateY(-4px);
 }
 
-.education-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    transition: transform 0.3s;
+.edu-logo-wrap {
+  width:80px; height:80px; flex-shrink:0;
+  background:white;
+  border-radius:4px;
+  overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
 }
-
-.education-card:hover {
-    transform: scale(1.02);
-    border-color: #e94560;
-}
-
-.edu-logo {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    border-radius: 15px;
-}
+.edu-logo-wrap img { width:100%; height:100%; object-fit:contain; padding:4px; }
 
 .edu-info h3 {
-    font-size: 1.5rem;
-    color: #e94560;
-    margin-bottom: 5px;
+  font-family: var(--font-mono);
+  font-size:1.1rem;
+  color:var(--white);
+  margin-bottom:4px;
 }
-
-.edu-info p {
-    color: #ccc;
-    margin: 2px 0;
+.edu-info .univ {
+  color:var(--cyan);
+  font-weight:500;
+  margin-bottom:10px;
 }
-
 .edu-info .year {
-    color: #a0a0a0;
-    font-size: 0.9rem;
-    margin-top: 10px;
-    display: block;
+  font-family: var(--font-mono);
+  font-size:0.72rem;
+  color:var(--gray);
+  letter-spacing:0.06em;
 }
 
-@media (max-width: 600px) {
-    .education-card {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* Experience Section */
-
-.experience-card:hover {
-    transform: translateY(-5px);
-    border-color: #e94560 !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Responsif untuk HP */
-@media (max-width: 768px) {
-    .experience-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-    .experience-card img {
-        margin-bottom: 20px;
-    }
-}
-
+/* ─── EXPERIENCE ─── */
 .experience {
-    padding: 100px 50px;
-    background: rgba(0, 0, 0, 0.1); /* Sedikit perbedaan warna background */
+  padding:100px 60px;
 }
 
-.experience-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Jarak antar kotak pengalaman */
+.exp-list {
+  display:flex; flex-direction:column; gap:20px;
+  max-width:860px;
 }
 
-.experience-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    transition: all 0.3s ease;
+.exp-card {
+  display:flex; gap:28px; align-items:flex-start;
+  padding:32px;
+  border:1px solid var(--border2);
+  background:var(--bg2);
+  transition:border-color 0.3s, background 0.3s, transform 0.3s;
+  position:relative;
 }
+.exp-card::before {
+  content:'';
+  position:absolute; left:0; top:0; bottom:0;
+  width:2px;
+  background:transparent;
+  transition:background 0.3s;
+}
+.exp-card:hover {
+  border-color:var(--border);
+  background:var(--bg3);
+  transform:translateX(4px);
+}
+.exp-card:hover::before { background:var(--cyan); }
 
-.experience-card:hover {
-    transform: translateY(-5px);
-    border-color: #e94560;
-    background: rgba(255, 255, 255, 0.08);
+.exp-logo-wrap {
+  width:76px; height:76px; flex-shrink:0;
+  background:#fff;
+  border-radius:4px;
+  overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
 }
-
-/* Ganti .exp-logo sebelumnya dengan ini */
-.exp-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 15px; /* Sedikit lengkungan di sudut */
-    object-fit: contain; /* Memastikan logo tidak terpotong */
-}
-
-/* Sedikit penyesuaian agar responsif di HP */
-@media (max-width: 600px) {
-    .experience-card {
-        flex-direction: column;
-        text-align: center;
-    }
-    .exp-img {
-        margin-bottom: 20px; /* Jarak bawah jika di HP */
-    }
-}
+.exp-logo-wrap img { width:100%; height:100%; object-fit:contain; padding:4px; }
 
 .exp-info h3 {
-    font-size: 1.4rem;
-    color: #fff;
-    margin-bottom: 5px;
+  font-family: var(--font-mono);
+  font-size:1rem;
+  color:var(--white);
+  margin-bottom:4px;
 }
-
-.exp-info .organization {
-    color: #e94560;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 8px;
+.exp-info .div-label {
+  font-size:0.85rem;
+  color:var(--gray);
+  margin-bottom:2px;
 }
-
+.exp-info .org {
+  font-size:0.88rem;
+  color:var(--cyan);
+  font-weight:500;
+  margin-bottom:12px;
+}
 .exp-info .desc {
-    color: #ccc;
-    font-size: 0.95rem;
-    line-height: 1.5;
+  font-size:0.9rem;
+  color:var(--white2);
+  font-weight:300;
+  line-height:1.75;
+  margin-bottom:12px;
 }
-
 .exp-info .year {
-    color: #a0a0a0;
-    font-size: 0.85rem;
-    margin-top: 10px;
-    display: block;
+  font-family: var(--font-mono);
+  font-size:0.68rem;
+  color:var(--gray2);
+  letter-spacing:0.08em;
 }
 
-@media (max-width: 600px) {
-    .experience-card {
-        flex-direction: column;
-        text-align: center;
-    }
+/* ─── SKILLS ─── */
+.skills {
+  padding:100px 60px;
+  background:var(--bg2);
 }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.skills-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap:16px;
+  max-width:920px;
+}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                position: fixed !important; /* !important memaksa agar tetap fixed */
-                top: 0 !important;
-                left: 0;
-                width: 100% !important;
-                padding: 10px 0 !important;
-                flex-direction: column !important;
-                background: rgba(10, 10, 25, 0.95) !important; /* Warna lebih solid agar tidak tembus */
-                backdrop-filter: blur(10px);
-                z-index: 9999 !important; /* Paling depan */
-            }
+.skill-card {
+  padding:28px 20px;
+  border:1px solid var(--border2);
+  background:var(--bg3);
+  text-align:center;
+  transition:all 0.3s;
+  position:relative;
+  overflow:hidden;
+  cursor:default;
+}
+.skill-card::after {
+  content:'';
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:2px;
+  background:var(--cyan);
+  transform:scaleX(0);
+  transition:transform 0.3s;
+}
+.skill-card:hover {
+  border-color:var(--border);
+  background:var(--bg2);
+  transform:translateY(-6px);
+}
+.skill-card:hover::after { transform:scaleX(1); }
 
-            .nav-links {
-                display: flex !important;
-                gap: 12px !important;
-                justify-content: center !important;
-                margin-top: 5px;
-                padding-bottom: 5px;
-            }
+.skill-card i {
+  font-size:2.2rem;
+  color:var(--cyan);
+  margin-bottom:14px;
+  display:block;
+}
+.skill-card h3 {
+  font-family: var(--font-mono);
+  font-size:0.72rem;
+  color:var(--white2);
+  letter-spacing:0.04em;
+}
 
-            .nav-links a {
-                font-size: 0.75rem !important;
-            }
+/* ─── PROJECTS ─── */
+.projects {
+  padding:100px 60px;
+}
 
-            .logo {
-                font-size: 1.2rem !important;
-            }
+.projects-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap:20px;
+  max-width:1100px;
+}
 
-            /* Beri jarak agar konten Hero tidak tertutup Navigasi */
-            .hero {
-                padding-top: 130px !important;
-            }
+.project-card {
+  border:1px solid var(--border2);
+  background:var(--bg2);
+  transition:all 0.3s;
+  overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.project-card:hover {
+  border-color:var(--border);
+  transform:translateY(-6px);
+}
 
-            .hero-content h1 {
-                font-size: 2rem !important;
-            }
+.project-thumb {
+  height:130px;
+  background:var(--bg3);
+  display:flex; align-items:center; justify-content:center;
+  font-size:3rem;
+  color:var(--cyan);
+  border-bottom:1px solid var(--border2);
+  position:relative;
+  overflow:hidden;
+}
+.project-thumb::before {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(135deg, var(--cyan-dim) 0%, transparent 60%);
+}
 
-            .hero-content .tagline {
-                font-size: 1.1rem !important;
-            }
+.project-body {
+  padding:24px;
+  flex:1;
+  display:flex; flex-direction:column;
+}
+.project-body h3 {
+  font-family: var(--font-mono);
+  font-size:0.88rem;
+  color:var(--white);
+  margin-bottom:10px;
+  letter-spacing:0.02em;
+}
+.project-body p {
+  font-size:0.87rem;
+  color:var(--gray);
+  font-weight:300;
+  line-height:1.7;
+  flex:1;
+  margin-bottom:20px;
+}
+.project-links { display:flex; gap:10px; }
 
-            /* Penyesuaian Card agar tidak terlalu lebar di HP */
-            .education-card, .experience-card {
-                flex-direction: column !important;
-                text-align: center !important;
-                padding: 20px !important;
-                gap: 15px !important;
-            }
+.btn-code {
+  font-family: var(--font-mono);
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:9px 18px;
+  border:1px solid var(--border);
+  color:var(--cyan);
+  text-decoration:none;
+  transition:all 0.2s;
+}
+.btn-code:hover {
+  background:var(--cyan-dim);
+  border-color:var(--cyan);
+}
 
-            .edu-logo, .exp-img {
-                margin: 0 auto !important;
-            }
+/* ─── CONTACT ─── */
+.contact {
+  padding:100px 60px;
+  background:var(--bg2);
+}
 
-            .skills, .projects, .contact {
-                padding: 50px 20px !important;
-            }
+.contact-inner {
+  max-width:660px;
+}
 
-            .section-title {
-                font-size: 1.8rem !important;
-            }
-        }
-    </style>
+.contact-inner p {
+  color:var(--white2);
+  font-weight:300;
+  line-height:1.8;
+  margin-bottom:48px;
+}
+
+.contact-grid {
+  display:flex; flex-direction:column; gap:12px;
+  margin-bottom:48px;
+}
+
+.contact-link {
+  display:flex; align-items:center; gap:16px;
+  padding:18px 24px;
+  border:1px solid var(--border2);
+  color:var(--white2);
+  text-decoration:none;
+  font-size:0.9rem;
+  transition:all 0.25s;
+  background:var(--bg3);
+}
+.contact-link i { color:var(--cyan); width:20px; text-align:center; }
+.contact-link:hover {
+  border-color:var(--cyan);
+  color:var(--white);
+  background:var(--cyan-dim);
+  transform:translateX(8px);
+}
+.contact-link .arrow {
+  margin-left:auto;
+  color:var(--gray2);
+  transition:color 0.2s, transform 0.2s;
+}
+.contact-link:hover .arrow {
+  color:var(--cyan);
+  transform:translateX(4px);
+}
+
+.cv-wrap {
+  padding-top:32px;
+  border-top:1px solid var(--border);
+}
+
+.btn-cv {
+  display:inline-flex; align-items:center; gap:12px;
+  font-family: var(--font-mono);
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:16px 36px;
+  background: var(--cyan);
+  color:var(--bg);
+  font-weight:700;
+  text-decoration:none;
+  transition:all 0.2s;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-cv:hover {
+  background:#fff;
+  transform:translateY(-3px);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding:32px 60px;
+  border-top:1px solid var(--border2);
+  display:flex; align-items:center; justify-content:space-between;
+  z-index:1; position:relative;
+}
+footer p {
+  font-family: var(--font-mono);
+  font-size:0.68rem;
+  color:var(--gray2);
+  letter-spacing:0.06em;
+}
+footer .foot-right {
+  font-family: var(--font-mono);
+  font-size:0.68rem;
+  color:var(--cyan);
+  opacity:0.6;
+}
+
+/* ─── ANIMATIONS ─── */
+.reveal {
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  nav{ padding:0 20px; height:60px; }
+  .nav-links{ gap:16px; }
+  .nav-links a{ font-size:0.65rem; }
+  .logo{ font-size:0.85rem; }
+
+  .hero{ padding:100px 24px 60px; }
+  .hero h1{ font-size:2rem; }
+  .hero-deco{ display:none; }
+  .hero-sub{ font-size:0.72rem; }
+  .hero p{ font-size:0.9rem; }
+
+  .education,.experience,.skills,.projects,.contact{
+    padding:70px 24px;
+  }
+  .edu-card{ flex-direction:column; text-align:center; padding:24px; }
+  .exp-card{ flex-direction:column; padding:24px; gap:16px; }
+  .skill-card{ padding:20px 12px; }
+  footer{ flex-direction:column; gap:8px; padding:24px; text-align:center; }
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">Portfolio</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Halo, I'm <span>Devin Novansyah</span></h1>
-            <p class="tagline">Data Scientist | Data Analysis | Machine Learning | Artificial Intelligence</p>
-            <p>
-                I am an Informatics Engineering student at Mercu Buana University with a strong interest in technology and innovation. My academic journey has introduced me to various fields in the IT world, including Data Scientist, Data Analysis, Machine Learning, and Artificial Intelligence.
+<!-- NAV -->
+<nav>
+  <div class="logo">DN<span>/</span>portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#education">Edu</a></li>
+    <li><a href="#experience">Exp</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-            </p>
-            
-            <!-- SOCIAL LINKS - Ganti URL dengan milikmu -->
-            <div class="social-links">
-    <a href="https://github.com/devin-novansyah16" target="_blank" class="github" title="GitHub">
-        <i class="fab fa-github"></i>
-    </a>
-    <a href="https://linkedin.com/in/devin-novansyah" target="_blank" class="linkedin" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-</div> 
-        </div>
-    </section>
-
-    <section class="education" id="education">
-    <h2 class="section-title">My <span>Education</span></h2>
-    <div class="education-container">
-        <div class="education-card">
-            <img src="Logo_Universitas_Mercu_Buana.jpg" alt="Logo UMB" class="edu-logo">
-            <div class="edu-info">
-                <h3>Informatics Engineering</h3>
-                <p>Universitas Mercu Buana</p>
-                <span class="year"><i class="far fa-calendar-alt"></i> September 2023 - Present</span>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-badge">Available for collaboration</div>
+    <h1>
+      Hello, I'm
+      <span class="name">Devin Novansyah</span>
+    </h1>
+    <p class="hero-sub">
+      Data Scientist
+      <span class="sep">/</span>
+      Data Analysis
+      <span class="sep">/</span>
+      Machine Learning
+      <span class="sep">/</span>
+      AI
+    </p>
+    <p>
+      Informatics Engineering student at Mercu Buana University with a strong interest in technology and innovation. My academic journey has introduced me to various fields including Data Science, Machine Learning, and Artificial Intelligence.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary-hero">Get in touch</a>
+      <div class="social-pill">
+        <a href="https://github.com/devin-novansyah16" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/devin-novansyah" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
     </div>
+  </div>
+  <div class="hero-deco"></div>
 </section>
 
-<section class="experience" id="experience" style="padding: 100px 50px;">
-    <h2 class="section-title">My <span>Experience</span></h2>
-    <div class="experience-container" style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
-
-        <div class="experience-card" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; display: flex; gap: 20px;">
-    
-    <!-- Ganti src dengan file logo perusahaan -->
-    <img src="lgi_logo.jpg" alt="Logo Perusahaan" style="width: 100px; height: 100px; border-radius: 15px; object-fit: contain;">
-    
-    <div class="exp-info">
-        <!-- Posisi / Jabatan -->
-        <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 5px;">Business Intelligence Engineer</h3>
-        
-        <!-- Nama Perusahaan -->
-        <p style="color: #e94560; margin: 0 0 10px 0; font-weight: bold;">PT Lippo General Insurance Tbk</p>
-        
-        <!-- Deskripsi Pekerjaan -->
-        <p class="desc" style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">Developed and optimized SQL/BigQuery queries for business and policy analysis, performed data extraction, transformation, and migration using Python, Excel, and BigQuery, conducted data validation and cleansing to ensure reporting accuracy, built dashboards and analytical reports for business performance monitoring, and debugged queries to resolve data discrepancies and improve reporting consistency.
-</p>
-        
-        <!-- Durasi Waktu -->
-        <span class="year" style="color: #a0a0a0; font-size: 0.9rem;"><i class="far fa-calendar-alt"></i> April 2026 - Present</span>
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="sec-label">// 01 — Education</div>
+  <h2 class="sec-title">My <em>Education</em></h2>
+  <div class="edu-card reveal">
+    <div class="edu-logo-wrap">
+      <img src="Logo_Universitas_Mercu_Buana.jpg" alt="Logo UMB">
     </div>
-</div>
-        
-        <div class="experience-card" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; display: flex; align-items: center; gap: 30px; transition: transform 0.3s, border-color 0.3s;">
-            <img src="logo_himti.jpg" alt="Logo HiMTI" style="width: 100px; height: 100px; border-radius: 15px; object-fit: contain;">
-
-            <div class="exp-info">
-                <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 5px;">Head of Internal Project Control Subdivision</h3>
-                <p style="color: #ccc; margin: 0; font-weight: 500;">PSDM Division</p>
-                <p style="color: #e94560; margin: 0 0 10px 0; font-weight: bold;">Himpunan Mahasiswa Teknik Informatika (HiMTI)</p>
-                
-                <p class="desc" style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">Responsible for overseeing the progress of internal organizational projects, ensuring effective time management, and coordinating teams to achieve program targets.
-.</p>
-                
-                <span class="year" style="color: #a0a0a0; font-size: 0.9rem;"><i class="far fa-calendar-alt"></i> Oktober 2025 - Present</span>
-            </div>
-        </div>
-
-        <div class="experience-card" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; display: flex; align-items: center; gap: 30px; transition: transform 0.3s, border-color 0.3s;">
-            <img src="idcamp.png" alt="Logo IDCamp" style="width: 100px; height: 100px; border-radius: 15px; object-fit: contain;">
-
-            <div class="exp-info">
-                <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 5px;">Intermediate Data Scientist Scholarship Awardee</h3>
-                <p style="color: #e94560; margin: 0 0 10px 0; font-weight: bold;">IDCamp Indosat Ooredoo Hutchison</p>
-                <!--<p style="color: #ccc; margin: 0 0 10px 0;">IDCamp Indosat Ooredoo Hutchison</p>-->
-                
-                <p class="desc" style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">Selected as a Scholarship Awardee in the IDCamp x Dicoding program and completed the Belajar Fundamental Analisis Data course at the Intermediate Data Scientist level.</p>
-                
-                <span class="year" style="color: #a0a0a0; font-size: 0.9rem;"><i class="far fa-calendar-alt"></i> September 2025 - Maret 2026</span>
-            </div>
-        </div>
-
+    <div class="edu-info">
+      <h3>Informatics Engineering</h3>
+      <p class="univ">Universitas Mercu Buana</p>
+      <span class="year"><i class="far fa-calendar-alt"></i> &nbsp;September 2023 — Present</span>
     </div>
+  </div>
 </section>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <h2 class="section-title">My <span>Skills</span></h2>
-        <div class="skills-grid">
-    <div class="skill-card">
-        <i class="fab fa-python"></i>
-        <h3>Python</h3>
-    </div>
-    
-    <div class="skill-card">
-        <i class="fas fa-table"></i>
-        <h3>Pandas & NumPy</h3>
-    </div>
-    
-    <div class="skill-card">
-        <i class="fas fa-brain"></i>
-        <h3>ML & AI</h3>
-    </div>
-    
-    <div class="skill-card">
-        <i class="fas fa-chart-bar"></i>
-        <h3>Dashboard & Data Visualization</h3>
-    </div>
-    
-    <div class="skill-card">
-        <i class="fas fa-database"></i>
-        <h3>SQL</h3>
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="sec-label">// 02 — Experience</div>
+  <h2 class="sec-title">My <em>Experience</em></h2>
+  <div class="exp-list">
+
+    <div class="exp-card reveal">
+      <div class="exp-logo-wrap">
+        <img src="lgi_logo.jpg" alt="PT Lippo General Insurance">
+      </div>
+      <div class="exp-info">
+        <h3>Business Intelligence Engineer</h3>
+        <p class="org">PT Lippo General Insurance Tbk</p>
+        <p class="desc">Developed and optimized SQL/BigQuery queries for business and policy analysis, performed data extraction, transformation, and migration using Python, Excel, and BigQuery. Built dashboards and analytical reports for business performance monitoring, and debugged queries to resolve data discrepancies and improve reporting consistency.</p>
+        <span class="year"><i class="far fa-calendar-alt"></i> &nbsp;April 2026 — Present</span>
+      </div>
     </div>
 
-    <div class="skill-card">
-        <i class="fas fa-file-excel"></i>
-        <h3>Microsoft Excel</h3>
-    </div>
-</div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <h2 class="section-title">My <span>Projects</span></h2>
-        <div class="projects-grid">
-    <div class="project-card">
-        <div class="project-image">
-            <i class="fas fa-percentage"></i>
-        </div>
-        <div class="project-info">
-            <h3>Ecommerce Promotion Analysis</h3>
-            <p>Analyzed the effectiveness of promotional campaigns on e-commerce platforms using Python to improve conversion rates.
-</p>
-            <div class="project-links">
-                <a href="https://github.com/devin-novansyah16/ecommerce-promotion-analysis" target="_blank" class="btn-primary">View Code</a>
-            </div>
-        </div>
+    <div class="exp-card reveal">
+      <div class="exp-logo-wrap">
+        <img src="logo_himti.jpg" alt="HiMTI">
+      </div>
+      <div class="exp-info">
+        <h3>Head of Internal Project Control Subdivision</h3>
+        <p class="div-label">PSDM Division</p>
+        <p class="org">Himpunan Mahasiswa Teknik Informatika (HiMTI)</p>
+        <p class="desc">Responsible for overseeing the progress of internal organizational projects, ensuring effective time management, and coordinating teams to achieve program targets.</p>
+        <span class="year"><i class="far fa-calendar-alt"></i> &nbsp;Oktober 2025 — Present</span>
+      </div>
     </div>
 
-
-    <div class="project-card">
-    <div class="project-image">
-        <i class="fas fa-traffic-light"></i>
+    <div class="exp-card reveal">
+      <div class="exp-logo-wrap">
+        <img src="idcamp.png" alt="IDCamp">
+      </div>
+      <div class="exp-info">
+        <h3>Intermediate Data Scientist Scholarship Awardee</h3>
+        <p class="org">IDCamp Indosat Ooredoo Hutchison</p>
+        <p class="desc">Selected as a Scholarship Awardee in the IDCamp x Dicoding program and completed the Belajar Fundamental Analisis Data course at the Intermediate Data Scientist level.</p>
+        <span class="year"><i class="far fa-calendar-alt"></i> &nbsp;September 2025 — Maret 2026</span>
+      </div>
     </div>
-    <div class="project-info">
-        <h3>Traffic Sign Recognition System</h3>
-        <p>Built a Convolutional Neural Network (CNN) model to classify traffic sign images with over 95% accuracy, including multi-platform deployment using TensorFlow.js and TensorFlow Lite.
-</p>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="sec-label">// 03 — Skills</div>
+  <h2 class="sec-title">My <em>Skills</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <i class="fab fa-python"></i>
+      <h3>Python</h3>
+    </div>
+    <div class="skill-card reveal">
+      <i class="fas fa-table"></i>
+      <h3>Pandas &amp; NumPy</h3>
+    </div>
+    <div class="skill-card reveal">
+      <i class="fas fa-brain"></i>
+      <h3>ML &amp; AI</h3>
+    </div>
+    <div class="skill-card reveal">
+      <i class="fas fa-chart-bar"></i>
+      <h3>Data Visualization</h3>
+    </div>
+    <div class="skill-card reveal">
+      <i class="fas fa-database"></i>
+      <h3>SQL</h3>
+    </div>
+    <div class="skill-card reveal">
+      <i class="fas fa-file-excel"></i>
+      <h3>Microsoft Excel</h3>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="sec-label">// 04 — Projects</div>
+  <h2 class="sec-title">My <em>Projects</em></h2>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-thumb"><i class="fas fa-percentage"></i></div>
+      <div class="project-body">
+        <h3>Ecommerce Promotion Analysis</h3>
+        <p>Analyzed the effectiveness of promotional campaigns on e-commerce platforms using Python to improve conversion rates.</p>
         <div class="project-links">
-            <a href="https://github.com/devin-novansyah16/Traffic-Sign-Recognition-System-A-CNN-Approach-for-Multi-Platform-Deployment" target="_blank" class="btn-primary">View Code</a>
+          <a href="https://github.com/devin-novansyah16/ecommerce-promotion-analysis" target="_blank" class="btn-code"><i class="fab fa-github"></i> View Code</a>
         </div>
-    </div>
-</div>
-
-    <div class="project-card">
-        <div class="project-image">
-            <i class="fas fa-university"></i>
-        </div>
-        <div class="project-info">
-            <h3>Bank Transaction ML Analysis</h3>
-            <p>Implemented Machine Learning to analyze banking transaction patterns and detect anomalies using Jupyter Notebook.
-</p>
-            <div class="project-links">
-                <a href="https://github.com/devin-novansyah16/bank-transaction-ml-analysis" target="_blank" class="btn-primary">View Code</a>
-            </div>
-        </div>
+      </div>
     </div>
 
-    <div class="project-card">
-            <div class="project-image">
-                <i class="fas fa-comments"></i>
-            </div>
-            <div class="project-info">
-                <h3>Gojek App Sentiment Analysis</h3>
-                <p>Built an end-to-end NLP pipeline using Deep Learning to classify sentiment from self-scraped Gojek user reviews.</p>
-                <div class="project-links">
-                    <a href="https://github.com/devin-novansyah16/gojek-sentiment-analysis" target="_blank" class="btn-primary">View Code</a>
-                </div>
-            </div>
+    <div class="project-card reveal">
+      <div class="project-thumb"><i class="fas fa-traffic-light"></i></div>
+      <div class="project-body">
+        <h3>Traffic Sign Recognition System</h3>
+        <p>Built a CNN model to classify traffic sign images with over 95% accuracy, including multi-platform deployment using TensorFlow.js and TensorFlow Lite.</p>
+        <div class="project-links">
+          <a href="https://github.com/devin-novansyah16/Traffic-Sign-Recognition-System-A-CNN-Approach-for-Multi-Platform-Deployment" target="_blank" class="btn-code"><i class="fab fa-github"></i> View Code</a>
         </div>
-
-    <div class="project-card">
-        <div class="project-image">
-            <i class="fas fa-chart-line"></i>
-        </div>
-        <div class="project-info">
-            <h3>E-Commerce Dashboard</h3>
-            <p>Created interactive data visualizations to monitor e-commerce business performance in a real-time and insightful manner.</p>
-            <div class="project-links">
-                <a href="https://github.com/devin-novansyah16/e-commerce-dashboard" target="_blank" class="btn-primary">View Code</a>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h2 class="section-title">Get In <span>Touch</span></h2>
-        <div class="contact-info">
-            <p>
-                Interested in collaborating or have an exciting project in mind?
-                Feel free to contact me through the following platforms!
-
-            </p>
-<div class="contact-links" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 50px;">
-    <a href="mailto:devinnovansyah1611@gmail.com" class="btn-secondary" style="padding: 15px 30px; border: 1px solid #e94560; color: #e94560; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
-        <i class="fas fa-envelope"></i> Email
-    </a>
-    <a href="https://github.com/devin-novansyah16" target="_blank" class="btn-secondary" style="padding: 15px 30px; border: 1px solid #e94560; color: #e94560; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
-        <i class="fab fa-github"></i> GitHub
-    </a>
-    <a href="https://linkedin.com/in/devin-novansyah" target="_blank" class="btn-secondary" style="padding: 15px 30px; border: 1px solid #e94560; color: #e94560; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
-        <i class="fab fa-linkedin-in"></i> LinkedIn
-    </a>
-</div>
-
-<div class="cv-download-final" style="text-align: center; margin-top: 50px;">
-    <a href="CV_Devin_Novansyah.pdf" download="CV_Devin_Novansyah" class="btn-primary" style="padding: 15px 40px; background: #e94560; color: #fff; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: bold; transition: background 0.3s ease, transform 0.3s ease; border: 2px solid transparent;">
-        <i class="fas fa-download"></i> Download Complete CV (PDF)
-    </a>
-</div>
+    <div class="project-card reveal">
+      <div class="project-thumb"><i class="fas fa-university"></i></div>
+      <div class="project-body">
+        <h3>Bank Transaction ML Analysis</h3>
+        <p>Implemented Machine Learning to analyze banking transaction patterns and detect anomalies using Jupyter Notebook.</p>
+        <div class="project-links">
+          <a href="https://github.com/devin-novansyah16/bank-transaction-ml-analysis" target="_blank" class="btn-code"><i class="fab fa-github"></i> View Code</a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; Devin Novansyah. All rights reserved.</p>
-    </footer>
+    <div class="project-card reveal">
+      <div class="project-thumb"><i class="fas fa-comments"></i></div>
+      <div class="project-body">
+        <h3>Gojek App Sentiment Analysis</h3>
+        <p>Built an end-to-end NLP pipeline using Deep Learning to classify sentiment from self-scraped Gojek user reviews.</p>
+        <div class="project-links">
+          <a href="https://github.com/devin-novansyah16/gojek-sentiment-analysis" target="_blank" class="btn-code"><i class="fab fa-github"></i> View Code</a>
+        </div>
+      </div>
+    </div>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <div class="project-card reveal">
+      <div class="project-thumb"><i class="fas fa-chart-line"></i></div>
+      <div class="project-body">
+        <h3>E-Commerce Dashboard</h3>
+        <p>Created interactive data visualizations to monitor e-commerce business performance in a real-time and insightful manner.</p>
+        <div class="project-links">
+          <a href="https://github.com/devin-novansyah16/e-commerce-dashboard" target="_blank" class="btn-code"><i class="fab fa-github"></i> View Code</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="sec-label">// 05 — Contact</div>
+  <h2 class="sec-title">Get In <em>Touch</em></h2>
+  <div class="contact-inner">
+    <p>Interested in collaborating or have an exciting project in mind? Feel free to reach out through any of the platforms below.</p>
+    <div class="contact-grid">
+      <a href="mailto:devinnovansyah1611@gmail.com" class="contact-link reveal">
+        <i class="fas fa-envelope"></i>
+        devinnovansyah1611@gmail.com
+        <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="https://github.com/devin-novansyah16" target="_blank" class="contact-link reveal">
+        <i class="fab fa-github"></i>
+        github.com/devin-novansyah16
+        <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="https://linkedin.com/in/devin-novansyah" target="_blank" class="contact-link reveal">
+        <i class="fab fa-linkedin-in"></i>
+        linkedin.com/in/devin-novansyah
+        <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+      </a>
+    </div>
+    <div class="cv-wrap reveal">
+      <a href="CV_Devin_Novansyah.pdf" download="CV_Devin_Novansyah" class="btn-cv">
+        <i class="fas fa-download"></i>
+        Download CV (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Devin Novansyah &nbsp;—&nbsp; All rights reserved.</p>
+  <span class="foot-right">Built with ♥ &amp; code</span>
+</footer>
+
+<script>
+// smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.querySelector(a.getAttribute('href'));
+    if(el) el.scrollIntoView({ behavior:'smooth' });
+  });
+});
+
+// reveal on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if(entry.isIntersecting){
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold:0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
