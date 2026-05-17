@@ -37,7 +37,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── NOISE TEXTURE ─── */
 body::before {
   content:'';
   position:fixed; inset:0;
@@ -45,7 +44,6 @@ body::before {
   pointer-events:none; z-index:0;
 }
 
-/* ─── GRID LINES BG ─── */
 body::after {
   content:'';
   position:fixed; inset:0;
@@ -56,7 +54,6 @@ body::after {
   pointer-events:none; z-index:0;
 }
 
-/* ─── NAV ─── */
 nav {
   position:fixed; top:0; left:0; right:0;
   z-index:999;
@@ -99,7 +96,6 @@ nav {
 .nav-links a:hover { color:var(--cyan); }
 .nav-links a:hover::after { transform:scaleX(1); }
 
-/* ─── HERO ─── */
 .hero {
   min-height:100vh;
   display:flex; align-items:center;
@@ -107,9 +103,7 @@ nav {
   position:relative; z-index:1;
 }
 
-.hero-inner {
-  max-width:900px;
-}
+.hero-inner { max-width:900px; }
 
 .hero-badge {
   display:inline-flex; align-items:center; gap:8px;
@@ -208,7 +202,6 @@ nav {
 .social-pill a:last-child { border-right:none; }
 .social-pill a:hover { color:var(--cyan); background:var(--cyan-dim); }
 
-/* decorative corner */
 .hero-deco {
   position:absolute; right:60px; top:50%;
   transform:translateY(-50%);
@@ -239,7 +232,6 @@ nav {
   to{transform:rotate(360deg) translateX(60px);}
 }
 
-/* ─── SECTIONS COMMON ─── */
 section { position:relative; z-index:1; }
 
 .sec-label {
@@ -262,7 +254,6 @@ section { position:relative; z-index:1; }
 }
 .sec-title em { font-style:normal; color:var(--cyan); }
 
-/* ─── EDUCATION ─── */
 .education {
   padding:100px 60px;
   background:var(--bg2);
@@ -309,10 +300,7 @@ section { position:relative; z-index:1; }
   letter-spacing:0.06em;
 }
 
-/* ─── EXPERIENCE ─── */
-.experience {
-  padding:100px 60px;
-}
+.experience { padding:100px 60px; }
 
 .exp-list {
   display:flex; flex-direction:column; gap:20px;
@@ -377,9 +365,9 @@ section { position:relative; z-index:1; }
 .exp-info .year {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--cyan);           
+  color: var(--cyan);
   letter-spacing: 0.08em;
-  background: var(--cyan-dim);  
+  background: var(--cyan-dim);
   border: 1px solid var(--border);
   padding: 4px 10px;
   display: inline-flex;
@@ -387,7 +375,6 @@ section { position:relative; z-index:1; }
   gap: 6px;
 }
 
-/* ─── SKILLS ─── */
 .skills {
   padding:100px 60px;
   background:var(--bg2);
@@ -439,10 +426,7 @@ section { position:relative; z-index:1; }
   letter-spacing:0.04em;
 }
 
-/* ─── PROJECTS ─── */
-.projects {
-  padding:100px 60px;
-}
+.projects { padding:100px 60px; }
 
 .projects-grid {
   display:grid;
@@ -499,7 +483,7 @@ section { position:relative; z-index:1; }
   flex:1;
   margin-bottom:20px;
 }
-.project-links { display:flex; gap:10px; }
+.project-links { display:flex; gap:10px; flex-wrap:wrap; }
 
 .btn-code {
   font-family: var(--font-mono);
@@ -517,15 +501,28 @@ section { position:relative; z-index:1; }
   border-color:var(--cyan);
 }
 
-/* ─── CONTACT ─── */
+.btn-demo {
+  font-family: var(--font-mono);
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:9px 18px;
+  background: var(--cyan);
+  color:var(--bg);
+  text-decoration:none;
+  font-weight:700;
+  transition:all 0.2s;
+}
+.btn-demo:hover {
+  background:#fff;
+}
+
 .contact {
   padding:100px 60px;
   background:var(--bg2);
 }
 
-.contact-inner {
-  max-width:660px;
-}
+.contact-inner { max-width:660px; }
 
 .contact-inner p {
   color:var(--white2);
@@ -590,7 +587,6 @@ section { position:relative; z-index:1; }
   transform:translateY(-3px);
 }
 
-/* ─── FOOTER ─── */
 footer {
   padding:32px 60px;
   border-top:1px solid var(--border2);
@@ -610,7 +606,6 @@ footer .foot-right {
   opacity:0.6;
 }
 
-/* ─── ANIMATIONS ─── */
 .reveal {
   opacity:0;
   transform:translateY(24px);
@@ -621,9 +616,7 @@ footer .foot-right {
   transform:translateY(0);
 }
 
-/* ─── RESPONSIVE ─── */
 @media(max-width:768px){
-  /* NAVBAR - fix mobile */
   nav {
     padding: 10px 16px;
     height: auto;
@@ -638,15 +631,11 @@ footer .foot-right {
     gap: 8px 16px;
   }
   .nav-links a { font-size: 0.62rem; }
-
-  /* HERO */
   .hero { padding: 130px 24px 60px; }
   .hero h1 { font-size: 2rem; }
   .hero-deco { display: none; }
   .hero-sub { font-size: 0.72rem; }
   .hero p { font-size: 0.9rem; }
-
-  /* SECTIONS */
   .education, .experience, .skills, .projects, .contact {
     padding: 70px 24px;
   }
@@ -659,7 +648,6 @@ footer .foot-right {
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">DN<span>/</span>portfolio</div>
   <ul class="nav-links">
@@ -672,10 +660,8 @@ footer .foot-right {
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-inner">
-    <!-- <div class="hero-badge">Available for collaboration</div> -->
     <h1>
       Hello, I'm
       <span class="name">Devin Novansyah</span>
@@ -703,7 +689,6 @@ footer .foot-right {
   <div class="hero-deco"></div>
 </section>
 
-<!-- EDUCATION -->
 <section class="education" id="education">
   <div class="sec-label">// 01 — Education</div>
   <h2 class="sec-title">My <em>Education</em></h2>
@@ -719,7 +704,6 @@ footer .foot-right {
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section class="experience" id="experience">
   <div class="sec-label">// 02 — Experience</div>
   <h2 class="sec-title">My <em>Experience</em></h2>
@@ -765,7 +749,6 @@ footer .foot-right {
   </div>
 </section>
 
-<!-- SKILLS -->
 <section class="skills" id="skills">
   <div class="sec-label">// 03 — Skills</div>
   <h2 class="sec-title">My <em>Skills</em></h2>
@@ -801,7 +784,6 @@ footer .foot-right {
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section class="projects" id="projects">
   <div class="sec-label">// 04 — Projects</div>
   <h2 class="sec-title">My <em>Projects</em></h2>
@@ -862,10 +844,34 @@ footer .foot-right {
       </div>
     </div>
 
+    <!-- PROJECT BARU 1: EDA Kemiskinan -->
+    <div class="project-card reveal">
+      <div class="project-thumb"><i class="fas fa-map-marked-alt"></i></div>
+      <div class="project-body">
+        <h3>EDA Kemiskinan &amp; Ekonomi Indonesia</h3>
+        <p>Exploratory Data Analysis terhadap data kemiskinan 34 provinsi Indonesia menggunakan data BPS 2023. Mengungkap korelasi IPM, PDRB, dan kemiskinan lewat 6 visualisasi interaktif.</p>
+        <div class="project-links">
+          <a href="https://github.com/devin-novansyah16/kemiskinan-indonesia-eda" target="_blank" class="btn-code"><i class="fab fa-github"></i> View Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT BARU 2: RAG PDF Chatbot -->
+    <div class="project-card reveal">
+      <div class="project-thumb"><i class="fas fa-robot"></i></div>
+      <div class="project-body">
+        <h3>RAG PDF Chatbot</h3>
+        <p>AI chatbot berbasis Retrieval-Augmented Generation yang memungkinkan tanya jawab dengan dokumen PDF. Dibangun dengan LangChain, FAISS, dan Groq LLM — deployed di Streamlit Cloud.</p>
+        <div class="project-links">
+          <a href="https://github.com/devin-novansyah16/rag-chatbot-pdf" target="_blank" class="btn-code"><i class="fab fa-github"></i> View Code</a>
+          <a href="https://devin-novansyah16-rag-chatbot-pdf.streamlit.app" target="_blank" class="btn-demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="sec-label">// 05 — Contact</div>
   <h2 class="sec-title">Get In <em>Touch</em></h2>
@@ -897,14 +903,12 @@ footer .foot-right {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>&copy; 2025 Devin Novansyah &nbsp;—&nbsp; All rights reserved.</p>
   <span class="foot-right">Built with ♥ &amp; code</span>
 </footer>
 
 <script>
-// smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
@@ -913,7 +917,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// reveal on scroll
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if(entry.isIntersecting){
